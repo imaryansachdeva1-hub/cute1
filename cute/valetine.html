@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Khushi 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#ff6f91,#ff9a9e,#ffc3a0);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.card{
+  background:white;
+  padding:35px 28px;
+  border-radius:28px;
+  width:350px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,0.25);
+  animation:pop 0.8s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.6);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+h1{
+  color:#ff4d6d;
+  font-size:24px;
+}
+
+p{
+  margin-top:10px;
+  color:#555;
+  font-size:15px;
+}
+
+.buttons{
+  margin-top:30px;
+  height:150px;
+  position:relative;
+}
+
+button{
+  padding:13px 28px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  position:absolute;
+  transition:0.25s;
+}
+
+#yes{
+  background:#ff4d6d;
+  color:white;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+#yes:hover{
+  transform:translateX(-50%) scale(1.15);
+}
+
+#no{
+  background:#f1f1f1;
+  color:#333;
+  left:50%;
+  top:75px;
+  transform:translateX(-50%);
+}
+
+.result{
+  display:none;
+  margin-top:20px;
+  font-size:19px;
+  color:#ff4d6d;
+  animation:fade 1s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.heart{
+  position:fixed;
+  font-size:22px;
+  animation:float 6s linear;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh) scale(1);opacity:1;}
+  100%{transform:translateY(-10vh) scale(1.7);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Khushi 💕</h1>
+  <p>
+    Will you be my Valentine?  
+    <br>I promise care, loyalty & endless smiles 😌
+  </p>
+
+  <div class="buttons">
+    <button id="yes">Yes 💖</button>
+    <button id="no">No 🙈</button>
+  </div>
+
+  <div class="result" id="result">
+    Yayyyy Khushi!! 💘  
+    <br>You just made my heart very happy 🥰  
+    <br>See you on 14th Feb? ❤️
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const result = document.getElementById("result");
+
+function moveNoButton(){
+  const x = Math.random()*260 - 130;
+  const y = Math.random()*120 - 60;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+// Desktop
+noBtn.addEventListener("mouseover", moveNoButton);
+// Mobile
+noBtn.addEventListener("touchstart", moveNoButton);
+
+yesBtn.addEventListener("click", ()=>{
+  result.style.display="block";
+  createHearts();
+});
+
+function createHearts(){
+  for(let i=0;i<45;i++){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  }
+}
+</script>
+
+</body>
+</html>
